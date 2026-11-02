@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Tasks</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- app.js is compiled from app.ts (run: npx tsc) -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="card">
+    <!-- Header with a small drawn icon -->
+    <header class="header">
+      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="8" y="6" width="32" height="38" rx="6" fill="#d1fae5" />
+        <rect x="16" y="2" width="16" height="8" rx="3" fill="#10b981" />
+        <path d="M15 22l4 4 8-8" stroke="#059669" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        <line x1="15" y1="34" x2="33" y2="34" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round" />
+      </svg>
+      <div>
+        <h1>My Tasks</h1>
+        <p class="subtitle" id="date"></p>
+      </div>
+    </header>
+
+    <!-- Progress bar -->
+    <div class="progress">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <p class="progress-text" id="progress-text">0% done</p>
+
+    <!-- Add form -->
+    <form id="todo-form" class="add-form">
+      <input id="todo-input" type="text" placeholder="Add a new task…" autocomplete="off" maxlength="120" />
+      <button type="submit" class="add-btn" aria-label="Add task">+</button>
+    </form>
+
+    <!-- Filters -->
+    <nav class="filters">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="active">To do</button>
+      <button class="filter" data-filter="completed">Done</button>
+    </nav>
+
+    <!-- List -->
+    <ul id="todo-list" class="list"></ul>
+
+    <!-- Empty state graphic -->
+    <div id="empty" class="empty">
+      <svg viewBox="0 0 120 90" aria-hidden="true">
+        <ellipse cx="60" cy="80" rx="40" ry="6" fill="#e5e7eb" />
+        <rect x="30" y="18" width="60" height="56" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="2" />
+        <line x1="42" y1="36" x2="78" y2="36" stroke="#d1d5db" stroke-width="3" stroke-linecap="round" />
+        <line x1="42" y1="48" x2="70" y2="48" stroke="#d1d5db" stroke-width="3" stroke-linecap="round" />
+        <line x1="42" y1="60" x2="74" y2="60" stroke="#d1d5db" stroke-width="3" stroke-linecap="round" />
+        <circle cx="92" cy="20" r="10" fill="#10b981" />
+        <path d="M88 20l3 3 5-6" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <p id="empty-text">Nothing here yet. Add your first task!</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span id="count">0 tasks left</span>
+      <div class="footer-actions">
+        <button id="clear-done" class="link-btn">Clear done</button>
+        <button id="clear-all" class="link-btn danger">Clear all</button>
+      </div>
+    </footer>
+
+    <p class="hint">Double-click a task to edit · Enter to save · Esc to cancel</p>
+  </main>
+</body>
+</html>

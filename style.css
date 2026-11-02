@@ -1,0 +1,193 @@
+/* ---------- Colors in one place ---------- */
+:root {
+  --bg: #ecfdf5;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #10b981;
+  --accent-dark: #059669;
+  --danger: #ef4444;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(160deg, var(--bg), #f0f9ff);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 16px;
+}
+
+/* ---------- Card ---------- */
+.card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.12);
+}
+
+.header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.logo { width: 48px; height: 48px; flex-shrink: 0; }
+h1 { font-size: 1.5rem; }
+.subtitle { color: var(--muted); font-size: 0.9rem; }
+
+/* ---------- Progress ---------- */
+.progress {
+  height: 8px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), #34d399);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+.progress-text { font-size: 0.8rem; color: var(--muted); margin: 6px 0 18px; text-align: right; }
+
+/* ---------- Add form ---------- */
+.add-form { display: flex; gap: 10px; margin-bottom: 16px; }
+.add-form input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.add-form input:focus { border-color: var(--accent); }
+.add-btn {
+  width: 48px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.add-btn:hover { background: var(--accent-dark); }
+.add-btn:active { transform: scale(0.94); }
+
+/* ---------- Filters ---------- */
+.filters {
+  display: flex;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 12px;
+}
+.filter {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px;
+  border-radius: 9px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+.filter.active {
+  background: #fff;
+  color: var(--accent-dark);
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- List ---------- */
+.list { list-style: none; }
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 6px;
+  border-bottom: 1px solid var(--border);
+}
+.item.new { animation: pop 0.25s ease; }
+@keyframes pop {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Round custom checkbox */
+.check {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: 2px solid #cbd5e1;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.check svg { width: 14px; height: 14px; opacity: 0; transition: opacity 0.2s; }
+.item.done .check { background: var(--accent); border-color: var(--accent); }
+.item.done .check svg { opacity: 1; }
+
+.text { flex: 1; word-break: break-word; cursor: text; }
+.item.done .text { color: #9ca3af; text-decoration: line-through; }
+
+.edit-input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.delete {
+  border: none;
+  background: transparent;
+  color: #cbd5e1;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, color 0.2s;
+}
+.item:hover .delete { opacity: 1; }
+.delete:hover { color: var(--danger); }
+
+/* ---------- Empty state ---------- */
+.empty { text-align: center; padding: 24px 0 8px; color: var(--muted); }
+.empty svg { width: 120px; margin-bottom: 8px; }
+.hidden { display: none; }
+
+/* ---------- Footer ---------- */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.footer-actions { display: flex; gap: 12px; }
+.link-btn {
+  border: none;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.link-btn:hover { color: var(--accent-dark); text-decoration: underline; }
+.link-btn.danger:hover,
+.link-btn.danger[data-confirm="yes"] { color: var(--danger); font-weight: 600; }
+
+.hint { margin-top: 16px; font-size: 0.75rem; color: #9ca3af; text-align: center; }
+
+/* Touch screens have no hover, so always show delete */
+@media (hover: none) { .delete { opacity: 1; } }
